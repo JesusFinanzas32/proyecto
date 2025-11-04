@@ -1,0 +1,882 @@
+<!DOCTYPE html>
+<html lang="es">
+<head>
+<meta charset="UTF-8" />
+<meta name="viewport" content="width=device-width, initial-scale=1.0"/>
+<title>Observatorio Financiero Valledupar</title>
+<link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600&display=swap" rel="stylesheet">
+<style>
+    /* -------- INTRO -------- */
+    #intro {
+        position: fixed;
+        top: 0; left: 0;
+        width: 100%; height: 100%;
+        background: #000;
+        color: #0015ff;
+        display: flex;
+        flex-direction: column;
+        align-items: center;
+        justify-content: center;
+        z-index: 9999;
+        animation: fadeOut 1s forwards 4s;
+    }
+
+    @keyframes fadeOut {
+        to { opacity: 0; visibility: hidden; }
+    }
+
+    #intro h1 {
+        font-size: 2.5em;
+        margin-bottom: 20px;
+        animation: fadeInDown 1s ease;
+    }
+
+    #intro .logos {
+        display: flex;
+        gap: 30px;
+        flex-wrap: wrap;
+        justify-content: center;
+        align-items: center;
+    }
+
+    #intro .logos img {
+        width: 80px;
+        height: 80px;
+        object-fit: contain;
+        filter: drop-shadow(0 0 5px #0015ff);
+        animation: pop 0.8s ease-in-out;
+    }
+
+    @keyframes pop {
+        0% { transform: scale(0); }
+        100% { transform: scale(1); }
+    }
+
+    /* -------- RESTO DE LA WEB -------- */
+    body {
+        margin: 0;
+        font-family: 'Poppins', sans-serif;
+        background: radial-gradient(circle at center, #111 0%, #000 100%);
+        color: #fff;
+        overflow-x: hidden;
+    }
+
+    header {
+        background: linear-gradient(120deg, #000, #111);
+        color: #0015ff;
+        padding: 40px 20px;
+        text-align: center;
+        animation: fadeInDown 1s ease-out;
+        border-bottom: 2px solid #0015ff;
+    }
+
+    @keyframes fadeInDown {
+        from { opacity: 0; transform: translateY(-40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .contenedor {
+        width: 90%;
+        max-width: 1200px;
+        margin: 40px auto;
+        background: #0d0d0d;
+        padding: 30px;
+        border-radius: 16px;
+        box-shadow: 0 0 30px rgba(0, 140, 255, 0.2);
+        animation: fadeInUp 1s ease-out;
+    }
+
+    @keyframes fadeInUp {
+        from { opacity: 0; transform: translateY(40px); }
+        to { opacity: 1; transform: translateY(0); }
+    }
+
+    .tab-buttons {
+        display: flex;
+        flex-wrap: wrap;
+        gap: 12px;
+        margin-bottom: 25px;
+        justify-content: center;
+    }
+
+    .tab-btn {
+        background: #111;
+        border: 1px solid #0015ff;
+        color: #0015ff;
+        padding: 12px 20px;
+        border-radius: 8px;
+        cursor: pointer;
+        font-weight: 600;
+        transition: all 0.3s ease;
+    }
+
+    .tab-btn:hover {
+        background:#0015ff;
+        color: #000;
+        box-shadow: 0 0 15px #0015ff;
+    }
+
+    .tab-btn.active {
+        background:#0015ff;
+        color: #000;
+        box-shadow: 0 0 20px #0015ff;
+    }
+
+    .tab-content {
+        display: none;
+        animation: fadeIn 0.8s ease-in-out;
+    }
+
+    .tab-content.active {
+        display: block;
+    }
+
+    @keyframes fadeIn {
+        from { opacity: 0; transform: scale(0.98); }
+        to { opacity: 1; transform: scale(1); }
+    }
+
+    input, button, textarea, select {
+        padding: 10px;
+        margin: 8px;
+        border-radius: 6px;
+        border: 1px solid #444;
+        background: #111;
+        color: #fff;
+        font-family: 'Poppins', sans-serif;
+    }
+
+    button {
+        background: #0015ff;
+        color: #000;
+        font-weight: bold;
+        cursor: pointer;
+        transition: all 0.3s ease;
+    }
+
+    button:hover {
+        background: #fff;
+        color: #000;
+        box-shadow: 0 0 15px #0015ff;
+    }
+
+    table {
+        width: 100%;
+        border-collapse: collapse;
+        margin-top: 20px;
+        font-size: 14px;
+        animation: fadeIn 1s ease;
+    }
+
+    table th, table td {
+        border: 1px solid #333;
+        padding: 10px;
+        text-align: center;
+    }
+
+    table th {
+        background: #0015ff;
+        color: #000;
+    }
+
+    table tr:nth-child(even) {
+        background: #1a1a1a;
+    }
+
+    #resumen {
+        margin-top: 20px;
+        padding: 15px;
+        background: #111;
+        border-left: 4px solid #0015ff;
+        color: #0015ff;
+        font-weight: bold;
+    }
+
+    canvas {
+        background: #111;
+        border-radius: 10px;
+        padding: 10px;
+        max-height: 360px;
+    }
+
+    ul {
+        padding-left: 20px;
+    }
+
+    li {
+        margin-bottom: 10px;
+    }
+
+    .fadeText {
+        animation: fadeInUp 1.2s ease;
+    }
+
+    .banco-logo {
+        width: 24px;
+        height: 24px;
+        vertical-align: middle;
+        margin-right: 8px;
+        filter: drop-shadow(0 0 2px #0015ff);
+    }
+
+    /* -------- CLASES FALTANTES -------- */
+    .oculto { display: none; }
+    .fade-in { animation: fadeIn 1s ease; }
+    .success-glow { box-shadow: 0 0 20px #0015ff; transition: box-shadow 1s ease; }
+    .error-input { border: 1px solid #ff4d4d !important; }
+    .shake { animation: shake 0.3s; }
+    @keyframes shake {
+        0%, 100% { transform: translateX(0); }
+        25% { transform: translateX(-5px); }
+        75% { transform: translateX(5px); }
+    }
+
+    /* minor layout for news / contact rows */
+    .row {
+        display: flex;
+        gap: 20px;
+        flex-wrap: wrap;
+        align-items: flex-start;
+    }
+    .col {
+        flex: 1 1 300px;
+        min-width: 250px;
+    }
+
+    .card {
+        background: #0b0b0b;
+        padding: 18px;
+        border-radius: 12px;
+        margin-bottom: 18px;
+        border: 1px solid rgba(255,215,0,0.06);
+    }
+
+    .news-item {
+        padding: 10px 12px;
+        border-left: 3px solid #0015ff;
+        background: #090909;
+        margin-bottom: 8px;
+        border-radius: 6px;
+    }
+
+    .small-muted { color: #ccc; font-size: 0.9rem; }
+
+</style>
+</head>
+<body>
+
+<!-- -------- INTRO CON LOGOS -------- -->
+<div id="intro">
+    <h1>Observatorio Financiero Valledupar</h1>
+    </div>
+    <p style="margin-top: 30px; color: #ccc;">Cargando experiencia financiera...</p>
+</div>
+
+<!-- -------- CONTENIDO PRINCIPAL -------- -->
+<header>
+    <h1>Observatorio Financiero Valledupar</h1>
+    <p style="font-size: 1.2em; color: #ccc;">Simulador bancario con interés compuesto exacto</p>
+</header>
+
+<div class="contenedor">
+    <div class="tab-buttons">
+        <button class="tab-btn active" data-tab="inicio">Inicio</button>
+        <button class="tab-btn" data-tab="bancos">Bancos</button>
+        <button class="tab-btn" data-tab="comparador">Comparador</button>
+        <button class="tab-btn" data-tab="glosario">Glosario</button>
+        <button class="tab-btn" data-tab="analisis">Análisis</button>
+        <button class="tab-btn" data-tab="simulador">Simulador</button>
+        <button class="tab-btn" data-tab="graficos">Gráficos</button>
+        <button class="tab-btn" data-tab="noticias">Noticias</button>
+        <button class="tab-btn" data-tab="contacto">Contacto</button>
+    </div>
+
+    <div id="inicio" class="tab-content active fadeText">
+        <h2>Bienvenido al Observatorio Financiero</h2>
+        <p>Bienvenido al Observatorio Financiero Local de Valledupar, una iniciativa académica de la Universidad de Santander (UDES), Facultad de Ciencias Económicas y Administrativas, curso de Instituciones Financieras – Sexto Semestre.</p>
+        <p>Nuestro propósito es ofrecer información clara, confiable y comparativa sobre los bancos presentes en la ciudad, sus tasas de interés, los productos financieros más utilizados y los conceptos clave para tomar decisiones responsables y bien informadas.</p>
+    </div>
+
+    <div id="bancos" class="tab-content fadeText">
+        <h2>Bancos en Valledupar</h2>
+        <ul>
+            <!-- añadí más versiones/resoluciones de logos para que tengas alternativas -->
+            <li>
+                <b>Bancolombia:</b> Entidad financiera privada, vigilada por la Superintendencia Financiera de Colombia. Ofrece productos para personas y empresas.Productos destacados: Cuenta de ahorro, créditos de consumo e hipotecarios, CDT digital, tarjeta de crédito Mastercard y Visa. - Centro, Calle 16 # 9-50. Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m. / Sábados 9:00 a.m. – 12:00 p.m.
+            </li>
+            <li>
+                <b>Perfil institucional: Una de las entidades bancarias más antiguas del país, con servicios de crédito, ahorro y banca empresarial.
+
+Productos destacados: Créditos de libre inversión, tarjeta de crédito, CDT tradicional.
+
+Canales digitales: Banca Móvil, Oficina Virtual.
+
+Sucursal en Valledupar:
+
+Dirección: Carrera 9 # 16-20, Centro
+
+Horario: Lunes a viernes 8:00 a.m. – 3:30 p.m.
+            </li>
+            <li>
+                <b>Davivienda:</b> Perfil institucional: Entidad con amplia presencia nacional y soluciones digitales para personas y negocios.
+
+Productos destacados: Crédito de consumo “Libranza”, ahorro digital, CDT desde $100.000, tarjetas de crédito y microcrédito.
+
+Canales digitales: App Davivienda, Daviplata, Oficina virtual.
+
+Sucursal en Valledupar:
+
+Dirección: Calle 16 # 9-60
+
+Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m. / Sábados 9:00 a.m. – 12:00 p.m.
+            </li>
+            <li>
+                <b>BBVA:</b> Perfil institucional: Entidad internacional con enfoque digital y productos competitivos para crédito y ahorro.
+
+Productos destacados: Crédito de libre inversión, CDT con renovación automática, tarjetas Visa, cuenta digital sin cuota de manejo.
+
+Canales digitales: App BBVA, Banca Online.
+
+Sucursal en Valledupar:
+
+Dirección: Centro Comercial Mayales Plaza
+
+Horario: Lunes a viernes 9:00 a.m. – 4:00 p.m.
+            </li>
+            <li>
+                <b>Banco Agrario:</b> Perfil institucional: Banco estatal, enfocado en desarrollo rural, microcréditos y financiamiento agrícola.
+
+Productos destacados: Créditos para emprendedores, microcrédito, ahorro tradicional, CDT.
+
+Canales digitales: App Banco Agrario, Sucursal Virtual.
+
+Sucursal en Valledupar:
+
+Dirección: Carrera 12 # 15-30, Centro
+
+Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m.
+        
+    </div>
+
+    <div id="comparador" class="tab-content fadeText">
+      <h2>Comparador de Tasas</h2>
+
+      <!-- PRIMERA TABLA: TASAS DE CRÉDITO -->
+      <table id="tablaComparador">
+        <tr>
+          <th>Banco</th>
+          <th>Tasa de Interés<br>Efectiva Anual (E.A.)</th>
+          <th>Tasa de Usura Vigente<br>(Tope Regulatorio)</th>
+          <th>Observaciones</th>
+        </tr>
+
+        <tr data-tasa="28.5">
+          <td>Bancolombia</td>
+          <td>24,33% E.A.</td>
+          <td>43% (Tope 2025)</td>
+          <td>Ofrece plazos amplios y trámites digitales.</td>
+        </tr>
+
+        <tr data-tasa="29.1">
+          <td>Banco de Bogotá</td>
+          <td>24,75% E.A.</td>
+          <td>43% (Tope 2025)</td>
+          <td>Enfoque en líneas de crédito rotatorio.</td>
+        </tr>
+
+        <tr data-tasa="30.0">
+          <td>Davivienda</td>
+          <td>24,9% E.A.</td>
+          <td>43% (Tope 2025)</td>
+          <td>Proceso de aprobación digital y Daviplata.</td>
+        </tr>
+
+        <tr data-tasa="31.0">
+          <td>BBVA</td>
+          <td>24,98% E.A.</td>
+          <td>43% (Tope 2025)</td>
+          <td>Plazos flexibles y cuenta digital sin cuota.</td>
+        </tr>
+
+        <tr data-tasa="27.8">
+          <td>Banco Agrario</td>
+          <td>23,87% E.A.</td>
+          <td>43% (Tope 2025)</td>
+          <td>Foco en microcrédito y desarrollo rural.</td>
+        </tr>
+
+        <!-- FILA DE ANÁLISIS -->
+        <tr>
+          <td><b>Análisis Central</b></td>
+          <td colspan="3" style="text-align:left; background:#111; color:#0015ff;">
+            La tasa de usura es el límite máximo legal que pueden cobrar los bancos en Colombia.
+            Mantener tasas por debajo de este umbral demuestra estabilidad y competencia en el mercado
+            de crédito en Valledupar.
+          </td>
+        </tr>
+      </table>
+
+      <!-- SEGUNDA TABLA: TASAS CDT (90,180,360 días) -->
+      <table id="tablaCDT">
+        <tr>
+          <th>Banco</th>
+          <th>Tasa a 90 días (E.A.)</th>
+          <th>Tasa a 180 días (E.A.)</th>
+          <th>Tasa a 360 días (E.A.)</th>
+          <th>Observaciones</th>
+        </tr>
+
+        <tr>
+          <td>Bancolombia</td>
+          <td>8.3% E.A.</td>
+          <td>9.0% E.A.</td>
+          <td>10.1% E.A.</td>
+          <td>Mejores tasas digitales para ahorro a largo plazo.</td>
+        </tr>
+
+        <tr>
+         <td>Banco de Bogotá</td>
+          <td>8.55% E.A.</td>
+          <td>8.8% E.A.</td>
+          <td>9.8% E.A.</td>
+          <td>Permite negociar el título valor en mercado secundario.</td>
+        </tr>
+
+        <tr>
+         <td>Davivienda</td>
+          <td>8.15% E.A.</td>
+          <td>8.7% E.A.</td>
+          <td>9.9% E.A.</td>
+          <td>CDT desde $100.000, accesible para pequeños ahorradores.</td>
+        </tr>
+
+        <tr>
+         <td>BBVA</td>
+          <td>8.35% E.A.</td>
+          <td>8.9% E.A.</td>
+          <td>10.0% E.A.</td>
+          <td>Opción de renovación automática.</td>
+        </tr>
+
+        <tr>
+         <td>Banco Agrario</td>
+          <td>8.15% E.A.</td>
+          <td>8.5% E.A.</td>
+          <td>9.6% E.A.</td>
+          <td>Atracción para pequeños productores y rurales.</td>
+        </tr>
+
+        <!-- FILA DE ANÁLISIS -->
+        <tr>
+          <td><b>Análisis Central</b></td>
+          <td colspan="4" style="text-align:left; background:#111; color: #0015ff;">
+            Las decisiones de política monetaria del Banco de la República influyen directamente en la tasa
+            de captación del sistema bancario. En Valledupar, la competencia por el ahorro se refleja en tasas
+            similares y productos digitales que facilitan la inversión.
+          </td>
+        </tr>
+      </table>
+
+    </div>
+
+    <div id="glosario" class="tab-content fadeText">
+        <h2>Glosario Financiero</h2>
+        <p></b>1.Inflación objetivo: Estrategia del Banco de la República para mantener la inflación entre 2% y 4%.</p>
+        <p></b>2.Tasa de intervención: Tasa de interés fijada por el Banco de la República que afecta el costo del crédito.</p>
+        <p></b>3.Tasa de usura: Límite máximo que puede cobrarse por intereses en un crédito.</p>
+        <p></b>4.Crédito de consumo: Préstamo destinado a necesidades personales del hogar.</p>
+        <p></b>5.CDT: Depósito a término fijo con rentabilidad asegurada.</p>
+        <p></b>6.Interés E.A.: Interés expresado en tasa efectiva anual.</p>
+        <p></b>7.Sistema Financiero: Conjunto de bancos y entidades que manejan dinero en un país.</p>
+        <p></b>8.SARLAFT: Sistema para prevenir lavado de activos y financiación del terrorismo.</p>
+        <p></b>9.Liquidez: Capacidad de una entidad para cumplir sus obligaciones sin pérdidas.</p>
+        <p></b>10.Fintech: Empresas que usan tecnología para ofrecer servicios financieros.</p>
+        <p></b>11.Cartera vencida: Créditos que los clientes no han pagado.</p>
+        <p></b>12.Microcrédito: Financiamiento para pequeños negocios.</p>
+        <p></b>13.Tasa pasiva: Interés que pagan los bancos por captar dinero (CDT, ahorro).</p>
+        <p></b>14.Tasa activa: Interés cobrado en préstamos y créditos.</p>
+        <p></b>15.Ahorro programado: Meta de ahorro con consignaciones periódicas.</p>
+        <p></b>16.Solvencia: Capacidad del banco para responder con su patrimonio.</p>
+        <p></b>17.Basilea III: Reglas internacionales para estabilidad bancaria.</p>
+        <p></b>18.Riesgo de crédito: Probabilidad de que un cliente no pague.</p>
+        <p></b>19.Morosidad: Estado de retraso en pagos.</p>
+        <p></b>20.Crédito rotativo: Línea de crédito que se usa y se repone al pagar.</p>
+    </div>
+
+    <div id="analisis" class="tab-content fadeText">
+        <h2>Análisis Económico</h2>
+        <p><b>El Impacto de la Desaceleración en el Crédito de Consumo Local (2024-2025)</b></p>
+        <p>Durante 2024 y 2025, la política monetaria del Banco de la República mantuvo tasas de interés elevadas para controlar la inflación. Esto ha encarecido el costo del crédito, especialmente el de consumo, afectando a hogares y pequeños negocios de Valledupar.
+
+Los bancos han endurecido sus requisitos de aprobación y han aumentado las provisiones para enfrentar el riesgo de mora. La cartera vencida creció debido al alto endeudamiento posterior a la pandemia, lo que llevó a una desaceleración del crédito.
+
+Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continúan priorizando clientes con historial sólido. La banca digital y las fintech son una alternativa importante gracias a procesos rápidos y menores costos operativos.</p>
+    </div>
+
+    <!-- SIMULADOR -->
+    <div id="simulador" class="tab-content fadeText">
+      <div class="card">
+        <label for="montoConversion">Monto del préstamo ($)</label>
+        <input type="number" id="montoConversion" placeholder="Ej: 5000000" min="1">
+
+        <label for="tea">Tasa Efectiva Anual (TEA %)</label>
+        <input type="number" id="tea" placeholder="Ej: 28.5" min="0.1" step="0.01">
+
+        <label for="periodosAno">Periodos por año</label>
+        <input type="number" id="periodosAno" placeholder="Ej: 12" min="1" max="12">
+
+        <label for="plazoConversion">Plazo total (periodos)</label>
+        <input type="number" id="plazoConversion" placeholder="Ej: 12" min="1">
+
+        <button id="btnCalcular" onclick="calcularConversion()">Calcular</button>
+
+        <div id="resultadoConversion" class="oculto"></div>
+      </div>
+
+      <div id="tablaCardConversion" class="card oculto">
+        <h2 style="color: #0015ff; margin-top: 0;">Tabla de amortización</h2>
+        <table id="tablaAmortizacionConversion">
+          <thead>
+            <tr>
+              <th>Período</th>
+              <th>Cuota ($)</th>
+              <th>Interés ($)</th>
+              <th>Abono ($)</th>
+              <th>Saldo ($)</th>
+            </tr>
+          </thead>
+          <tbody></tbody>
+        </table>
+      </div>
+    </div>
+
+    <div id="graficos" class="tab-content fadeText">
+        <h2>Gráfico de Tasas</h2>
+        <div class="card">
+            <canvas id="graf" width="600" height="320"></canvas>
+            <p class="small-muted">La gráfica muestra las tasas E.A. listadas en el comparador. Si cambias las tasas en la tabla del comparador, recarga la pestaña para actualizar la gráfica.</p>
+        </div>
+    </div>
+
+    <div id="noticias" class="tab-content fadeText">
+        <h2>Noticias</h2>
+        <div class="row">
+            <div class="col">
+                <div id="listaNoticias" class="card">
+                    <!-- Aquí puedes pegar/añadir tus noticias. -->
+                    <p class="small-muted">No hay noticias aún. Usa el formulario de la derecha para añadirlas (tus noticias no se envían a internet, quedan en la sesión del navegador mientras la página esté abierta).</p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h3>Añadir noticia</h3>
+                    <label for="tituloNoticia">Título</label><br>
+                    <input id="tituloNoticia" type="text" placeholder="Título de la noticia">
+                    <label for="textoNoticia">Contenido / Enlace</label><br>
+                    <textarea id="textoNoticia" rows="4" placeholder="Texto breve o enlace"></textarea>
+                    <button id="btnAgregarNoticia">Agregar noticia</button>
+                    <button id="btnLimpiarNoticias" style="background:#333;color:#fff;margin-left:8px;">Limpiar noticias</button>
+                    <p class="small-muted" style="margin-top:8px;">Pegarás aquí la información que mencionaste que pondrás tú.</p>
+                </div>
+            </div>
+        </div>
+    </div>
+
+    <div id="contacto" class="tab-content fadeText">
+        <h2>Contacto</h2>
+        <div class="row">
+            <div class="col">
+                <div class="card">
+                    <p>Universidad de Santander (UDES)</p>
+                    <p>Instituciones Financieras – Sexto Semestre</p>
+                    <p>Email: <span style="color: #0015ff;">observatorio.financiero@udes.edu.co</span></p>
+                </div>
+            </div>
+            <div class="col">
+                <div class="card">
+                    <h3>Enviar mensaje</h3>
+                    <label for="contactName">Nombre</label><br>
+                    <input id="contactName" type="text" placeholder="Tu nombre">
+                    <label for="contactEmail">Email</label><br>
+                    <input id="contactEmail" type="email" placeholder="correo@ejemplo.com">
+                    <label for="contactMsg">Mensaje</label><br>
+                    <textarea id="contactMsg" rows="4" placeholder="Escribe tu mensaje"></textarea>
+                    <div>
+                        <button id="btnEnviarContacto">Enviar</button>
+                        <span id="contactFeedback" style="margin-left:12px;"></span>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- Chart.js -->
+<script src="https://cdn.jsdelivr.net/npm/chart.js"></script>
+
+<script>
+// -------- INTRO AUTO-OCULTABLE --------
+setTimeout(() => {
+    const intro = document.getElementById("intro");
+    if (intro) intro.style.display = "none";
+}, 4000);
+
+// -------- TABS --------
+document.querySelectorAll(".tab-btn").forEach(btn=>{
+    btn.addEventListener("click", ()=>{
+        document.querySelectorAll(".tab-btn").forEach(b=>b.classList.remove("active"));
+        document.querySelectorAll(".tab-content").forEach(c=>c.classList.remove("active"));
+        btn.classList.add("active");
+        const target = document.getElementById(btn.dataset.tab);
+        if (target) target.classList.add("active");
+        // Si activas la pestaña de gráficos, intenta (re)dibujar la gráfica
+        if (btn.dataset.tab === 'graficos') {
+            setTimeout(()=> { tryRenderChart(); }, 100); // pequeño delay para permitir layout
+        }
+    });
+});
+
+// -------- SIMULADOR --------
+function mostrarError(campo, mensaje) {
+  campo.classList.add("error-input", "shake");
+  setTimeout(() => campo.classList.remove("shake"), 300);
+  if (!campo.nextElementSibling || !campo.nextElementSibling.classList.contains("error-msg")) {
+    const msg = document.createElement("span");
+    msg.className = "error-msg";
+    msg.style.color = "#ff4d4d";
+    msg.style.fontSize = "0.85rem";
+    msg.textContent = mensaje;
+    campo.parentNode.insertBefore(msg, campo.nextSibling);
+  }
+}
+
+function limpiarErrores() {
+  document.querySelectorAll(".error-input").forEach(el => el.classList.remove("error-input"));
+  document.querySelectorAll(".error-msg").forEach(el => el.remove());
+}
+
+async function calcularConversion() {
+  limpiarErrores();
+
+  const P = Number(document.getElementById("montoConversion").value);
+  const TEA = Number(document.getElementById("tea").value);
+  const m = Number(document.getElementById("periodosAno").value);
+  const n = Number(document.getElementById("plazoConversion").value);
+
+  let valido = true;
+
+  if (!P || P <= 0) { mostrarError(document.getElementById("montoConversion"), "Monto debe ser > 0"); valido = false; }
+  if (!TEA || TEA <= 0) { mostrarError(document.getElementById("tea"), "TEA debe ser > 0"); valido = false; }
+  if (!m || m <= 0) { mostrarError(document.getElementById("periodosAno"), "Periodos/año debe ser ≥ 1"); valido = false; }
+  if (!n || n <= 0) { mostrarError(document.getElementById("plazoConversion"), "Plazo debe ser ≥ 1"); valido = false; }
+
+  if (!valido) return;
+
+  const btn = document.getElementById("btnCalcular");
+  btn.disabled = true;
+  btn.textContent = "Calculando...";
+
+  await new Promise(r => setTimeout(r, 400));
+
+  // Cálculos corregidos
+  const i_periodica = Math.pow(1 + TEA / 100, 1 / m) - 1;
+  const TEN = i_periodica * m;
+  const cuota = (P * i_periodica * Math.pow(1 + i_periodica, n)) / (Math.pow(1 + i_periodica, n) - 1);
+
+  const resDiv = document.getElementById("resultadoConversion");
+  resDiv.innerHTML = `
+    <div class="fade-in">
+      <p><strong>Tasa Efectiva Anual (TEA):</strong> ${(TEA).toFixed(2)}%</p>
+      <p><strong>Tasa Efectiva Nominal (TEN):</strong> ${(TEN * 100).toFixed(4)}%</p>
+      <p><strong>Tasa periódica:</strong> ${(i_periodica * 100).toFixed(4)}%</p>
+      <p><strong>Cuota fija por periodo:</strong> $${cuota.toFixed(2)}</p>
+    </div>
+  `;
+  resDiv.classList.remove("oculto");
+  resDiv.classList.add("success-glow");
+  setTimeout(() => resDiv.classList.remove("success-glow"), 1000);
+
+  const saldoInicial = P;
+  let saldo = saldoInicial;
+  const tbody = document.querySelector("#tablaAmortizacionConversion tbody");
+  tbody.innerHTML = "";
+  for (let k = 1; k <= n; k++) {
+    const interes = saldo * i_periodica;
+    const abono = cuota - interes;
+    saldo -= abono;
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${k}</td>
+      <td>$${cuota.toFixed(2)}</td>
+      <td>$${interes.toFixed(2)}</td>
+      <td>$${abono.toFixed(2)}</td>
+      <td>$${Math.max(0, saldo).toFixed(2)}</td>
+    `;
+    fila.style.opacity = "0";
+    tbody.appendChild(fila);
+    setTimeout(() => fila.style.opacity = "1", k * 40);
+  }
+
+  const tablaCard = document.getElementById("tablaCardConversion");
+  tablaCard.classList.remove("oculto");
+  tablaCard.classList.add("fade-in");
+  tablaCard.scrollIntoView({ behavior: "smooth", block: "start" });
+
+  btn.disabled = false;
+  btn.textContent = "Calcular";
+}
+
+// -------- GRÁFICA (Chart.js) --------
+let tasaChart = null;
+function collectRatesFromTable() {
+    const rows = Array.from(document.querySelectorAll("#tablaComparador tr[data-tasa]"));
+    const labels = [];
+    const tasas = [];
+    rows.forEach(r => {
+        const nameCell = r.children[0]?.innerText || 'Banco';
+        const tasa = parseFloat(r.dataset.tasa) || 0;
+        labels.push(nameCell.replace(/\n/g, ' ').trim());
+        tasas.push(tasa);
+    });
+    return { labels, tasas };
+}
+
+function tryRenderChart() {
+    const ctx = document.getElementById('graf');
+    if (!ctx) return;
+    const data = collectRatesFromTable();
+    // si ya existe, destruir y recrear (evita duplicados)
+    if (tasaChart) {
+        try { tasaChart.destroy(); } catch(e) { /* ignore */ }
+        tasaChart = null;
+    }
+    // usa Chart.js para generar una barra simple
+    tasaChart = new Chart(ctx, {
+        type: 'bar',
+        data: {
+            labels: data.labels,
+            datasets: [{
+                label: 'Tasa E.A. (%)',
+                data: data.tasas,
+            }]
+        },
+        options: {
+            responsive: true,
+            maintainAspectRatio: false,
+            scales: {
+                y: {
+                    beginAtZero: true,
+                    ticks: { callback: function(v){ return v + '%'; } }
+                }
+            },
+            plugins: {
+                legend: { display: false }
+            }
+        }
+    });
+}
+
+// render inicial si la pestaña de graficos está activa
+document.addEventListener('DOMContentLoaded', () => {
+    // intentamos renderizar la gráfica al cargar
+    tryRenderChart();
+
+    // inicializar noticias: persistencia temporal (session)
+    loadNoticiasFromSession();
+
+    // listeners para noticias y contacto
+    document.getElementById('btnAgregarNoticia').addEventListener('click', agregarNoticia);
+    document.getElementById('btnLimpiarNoticias').addEventListener('click', limpiarNoticias);
+
+    document.getElementById('btnEnviarContacto').addEventListener('click', enviarContacto);
+});
+
+// -------- NOTICIAS (editable por el usuario) --------
+function renderNoticias(list) {
+    const container = document.getElementById('listaNoticias');
+    container.innerHTML = '';
+    if (!list || list.length === 0) {
+        container.innerHTML = '<p class="small-muted">No hay noticias aún. Usa el formulario para añadirlas.</p>';
+        return;
+    }
+    list.slice().reverse().forEach((item, idx) => {
+        const div = document.createElement('div');
+        div.className = 'news-item';
+        div.innerHTML = `<strong>${item.titulo || 'Sin título'}</strong><div style="font-size:0.95rem;margin-top:6px;">${item.texto || ''}</div><div style="margin-top:6px;font-size:0.8rem;color:#aaa;">${item.fecha || ''}</div>`;
+        container.appendChild(div);
+    });
+}
+
+function agregarNoticia() {
+    const t = document.getElementById('tituloNoticia').value.trim();
+    const txt = document.getElementById('textoNoticia').value.trim();
+    if (!t && !txt) {
+        alert('Ingresa un título o contenido para la noticia.');
+        return;
+    }
+    const noticia = { titulo: t, texto: txt, fecha: new Date().toLocaleString() };
+    const list = getNoticiasFromSession();
+    list.push(noticia);
+    sessionStorage.setItem('observatorio_noticias', JSON.stringify(list));
+    document.getElementById('tituloNoticia').value = '';
+    document.getElementById('textoNoticia').value = '';
+    renderNoticias(list);
+}
+
+function getNoticiasFromSession() {
+    try {
+        const s = sessionStorage.getItem('observatorio_noticias');
+        if (!s) return [];
+        return JSON.parse(s);
+    } catch (e) { return []; }
+}
+
+function loadNoticiasFromSession() {
+    renderNoticias(getNoticiasFromSession());
+}
+
+function limpiarNoticias() {
+    if (!confirm('¿Limpiar todas las noticias?')) return;
+    sessionStorage.removeItem('observatorio_noticias');
+    loadNoticiasFromSession();
+}
+
+// -------- CONTACTO (validación y feedback local) --------
+function enviarContacto() {
+    const name = document.getElementById('contactName');
+    const email = document.getElementById('contactEmail');
+    const msg = document.getElementById('contactMsg');
+    const feedback = document.getElementById('contactFeedback');
+
+    // limpieza de mensajes previos
+    feedback.textContent = '';
+    name.classList.remove('error-input');
+    email.classList.remove('error-input');
+    msg.classList.remove('error-input');
+
+    let ok = true;
+    if (!name.value.trim()) { name.classList.add('error-input'); ok = false; }
+    if (!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value.trim())) { email.classList.add('error-input'); ok = false; }
+    if (!msg.value.trim()) { msg.classList.add('error-input'); ok = false; }
+
+    if (!ok) {
+        feedback.style.color = '#ff4d4d';
+        feedback.textContent = 'Completa correctamente los campos resaltados.';
+        return;
+    }
+
+    // simulación de envío (no se envía a servidor)
+    feedback.style.color = '#ffd700';
+    feedback.textContent = 'Enviado localmente. Gracias — (esto es una simulación).';
+
+    // opcional: limpiar campos
+    setTimeout(() => {
+        name.value = ''; email.value = ''; msg.value = '';
+        // quitar feedback después de unos segundos
+        setTimeout(()=> feedback.textContent = '', 3500);
+    }, 400);
+}
+
+</script>
+</body>
+</html>
