@@ -11,8 +11,8 @@
         position: fixed;
         top: 0; left: 0;
         width: 100%; height: 100%;
-        background: #000;
-        color: #0015ff;
+        background: #0D1117;
+        color: #3B82F6;
         display: flex;
         flex-direction: column;
         align-items: center;
@@ -27,24 +27,13 @@
 
     #intro h1 {
         font-size: 2.5em;
-        margin-bottom: 20px;
+        margin-bottom: 12px;
         animation: fadeInDown 1s ease;
     }
 
-    #intro .logos {
-        display: flex;
-        gap: 30px;
-        flex-wrap: wrap;
-        justify-content: center;
-        align-items: center;
-    }
-
-    #intro .logos img {
-        width: 80px;
-        height: 80px;
-        object-fit: contain;
-        filter: drop-shadow(0 0 5px #0015ff);
-        animation: pop 0.8s ease-in-out;
+    #intro p {
+        margin: 0;
+        color: #9DA5B4;
     }
 
     @keyframes pop {
@@ -56,18 +45,18 @@
     body {
         margin: 0;
         font-family: 'Poppins', sans-serif;
-        background: radial-gradient(circle at center, #111 0%, #000 100%);
-        color: #fff;
+        background: #0D1117;
+        color: #E6E6E6;
         overflow-x: hidden;
     }
 
     header {
-        background: linear-gradient(120deg, #000, #111);
-        color: #0015ff;
+        background: linear-gradient(120deg, #0D1117, #0D1117);
+        color: #3B82F6;
         padding: 40px 20px;
         text-align: center;
         animation: fadeInDown 1s ease-out;
-        border-bottom: 2px solid #0015ff;
+        border-bottom: 2px solid #3B82F6;
     }
 
     @keyframes fadeInDown {
@@ -79,10 +68,10 @@
         width: 90%;
         max-width: 1200px;
         margin: 40px auto;
-        background: #0d0d0d;
+        background: #0D1117;
         padding: 30px;
         border-radius: 16px;
-        box-shadow: 0 0 30px rgba(0, 140, 255, 0.2);
+        box-shadow: 0 0 30px rgba(59,130,246,0.3);
         animation: fadeInUp 1s ease-out;
     }
 
@@ -100,9 +89,9 @@
     }
 
     .tab-btn {
-        background: #111;
-        border: 1px solid #0015ff;
-        color: #0015ff;
+        background: #0D1117;
+        border: 1px solid #3B82F6;
+        color: #3B82F6;
         padding: 12px 20px;
         border-radius: 8px;
         cursor: pointer;
@@ -111,15 +100,15 @@
     }
 
     .tab-btn:hover {
-        background:#0015ff;
-        color: #000;
-        box-shadow: 0 0 15px #0015ff;
+        background:#60A5FA;
+        color: #0D1117;
+        box-shadow: 0 0 15px rgba(59,130,246,0.3);
     }
 
     .tab-btn.active {
-        background:#0015ff;
-        color: #000;
-        box-shadow: 0 0 20px #0015ff;
+        background: linear-gradient(90deg, #2563EB, #1D4ED8);
+        color: #E6E6E6;
+        box-shadow: 0 0 20px rgba(59,130,246,0.3);
     }
 
     .tab-content {
@@ -140,24 +129,25 @@
         padding: 10px;
         margin: 8px;
         border-radius: 6px;
-        border: 1px solid #444;
-        background: #111;
-        color: #fff;
+        border: 1px solid #9DA5B4;
+        background: #0D1117;
+        color: #E6E6E6;
         font-family: 'Poppins', sans-serif;
     }
 
     button {
-        background: #0015ff;
-        color: #000;
+        background: linear-gradient(90deg, #2563EB, #1D4ED8);
+        color: #E6E6E6;
         font-weight: bold;
         cursor: pointer;
         transition: all 0.3s ease;
+        border: none;
     }
 
     button:hover {
-        background: #fff;
-        color: #000;
-        box-shadow: 0 0 15px #0015ff;
+        background: #60A5FA;
+        color: #0D1117;
+        box-shadow: 0 0 15px rgba(59,130,246,0.3);
     }
 
     table {
@@ -169,31 +159,31 @@
     }
 
     table th, table td {
-        border: 1px solid #333;
+        border: 1px solid #9DA5B4;
         padding: 10px;
         text-align: center;
     }
 
     table th {
-        background: #0015ff;
-        color: #000;
+        background: #3B82F6;
+        color: #0D1117;
     }
 
     table tr:nth-child(even) {
-        background: #1a1a1a;
+        background: #0D1117;
     }
 
     #resumen {
         margin-top: 20px;
         padding: 15px;
-        background: #111;
-        border-left: 4px solid #0015ff;
-        color: #0015ff;
+        background: #0D1117;
+        border-left: 4px solid #3B82F6;
+        color: #3B82F6;
         font-weight: bold;
     }
 
     canvas {
-        background: #111;
+        background: #0D1117;
         border-radius: 10px;
         padding: 10px;
         max-height: 360px;
@@ -216,13 +206,13 @@
         height: 24px;
         vertical-align: middle;
         margin-right: 8px;
-        filter: drop-shadow(0 0 2px #0015ff);
+        filter: drop-shadow(0 0 2px #3B82F6);
     }
 
     /* -------- CLASES FALTANTES -------- */
     .oculto { display: none; }
     .fade-in { animation: fadeIn 1s ease; }
-    .success-glow { box-shadow: 0 0 20px #0015ff; transition: box-shadow 1s ease; }
+    .success-glow { box-shadow: 0 0 20px rgba(59,130,246,0.3); transition: box-shadow 1s ease; }
     .error-input { border: 1px solid #ff4d4d !important; }
     .shake { animation: shake 0.3s; }
     @keyframes shake {
@@ -244,22 +234,22 @@
     }
 
     .card {
-        background: #0b0b0b;
+        background: #0D1117;
         padding: 18px;
         border-radius: 12px;
         margin-bottom: 18px;
-        border: 1px solid rgba(255,215,0,0.06);
+        border: 1px solid rgba(59,130,246,0.3);
     }
 
     .news-item {
         padding: 10px 12px;
-        border-left: 3px solid #0015ff;
-        background: #090909;
+        border-left: 3px solid #3B82F6;
+        background: #0D1117;
         margin-bottom: 8px;
         border-radius: 6px;
     }
 
-    .small-muted { color: #ccc; font-size: 0.9rem; }
+    .small-muted { color: #9DA5B4; font-size: 0.9rem; }
 
 </style>
 </head>
@@ -268,14 +258,13 @@
 <!-- -------- INTRO CON LOGOS -------- -->
 <div id="intro">
     <h1>Observatorio Financiero Valledupar</h1>
-    </div>
-    <p style="margin-top: 30px; color: #ccc;">Cargando experiencia financiera...</p>
+    <p>Cargando experiencia financiera...</p>
 </div>
 
 <!-- -------- CONTENIDO PRINCIPAL -------- -->
 <header>
     <h1>Observatorio Financiero Valledupar</h1>
-    <p style="font-size: 1.2em; color: #ccc;">Simulador bancario con interés compuesto exacto</p>
+    <p style="font-size: 1.2em; color: #9DA5B4;">Simulador bancario con interés compuesto exacto</p>
 </header>
 
 <div class="contenedor">
@@ -300,62 +289,42 @@
     <div id="bancos" class="tab-content fadeText">
         <h2>Bancos en Valledupar</h2>
         <ul>
-            <!-- añadí más versiones/resoluciones de logos para que tengas alternativas -->
             <li>
-                <b>Bancolombia:</b> Entidad financiera privada, vigilada por la Superintendencia Financiera de Colombia. Ofrece productos para personas y empresas.Productos destacados: Cuenta de ahorro, créditos de consumo e hipotecarios, CDT digital, tarjeta de crédito Mastercard y Visa. - Centro, Calle 16 # 9-50. Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m. / Sábados 9:00 a.m. – 12:00 p.m.
+                <b>Bancolombia:</b> Entidad financiera privada, vigilada por la Superintendencia Financiera de Colombia. Ofrece productos para personas y empresas. Productos destacados: Cuenta de ahorro, créditos de consumo e hipotecarios, CDT digital, tarjeta de crédito Mastercard y Visa. - Centro, Calle 16 # 9-50. Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m. / Sábados 9:00 a.m. – 12:00 p.m.
             </li>
             <li>
-                <b>Perfil institucional: Una de las entidades bancarias más antiguas del país, con servicios de crédito, ahorro y banca empresarial.
-
-Productos destacados: Créditos de libre inversión, tarjeta de crédito, CDT tradicional.
-
-Canales digitales: Banca Móvil, Oficina Virtual.
-
-Sucursal en Valledupar:
-
-Dirección: Carrera 9 # 16-20, Centro
-
-Horario: Lunes a viernes 8:00 a.m. – 3:30 p.m.
+                <b>Banco de Bogotá:</b> Perfil institucional: Una de las entidades bancarias más antiguas del país, con servicios de crédito, ahorro y banca empresarial.
+                Productos destacados: Créditos de libre inversión, tarjeta de crédito, CDT tradicional.
+                Canales digitales: Banca Móvil, Oficina Virtual.
+                Sucursal en Valledupar:
+                Dirección: Carrera 9 # 16-20, Centro
+                Horario: Lunes a viernes 8:00 a.m. – 3:30 p.m.
             </li>
             <li>
                 <b>Davivienda:</b> Perfil institucional: Entidad con amplia presencia nacional y soluciones digitales para personas y negocios.
-
-Productos destacados: Crédito de consumo “Libranza”, ahorro digital, CDT desde $100.000, tarjetas de crédito y microcrédito.
-
-Canales digitales: App Davivienda, Daviplata, Oficina virtual.
-
-Sucursal en Valledupar:
-
-Dirección: Calle 16 # 9-60
-
-Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m. / Sábados 9:00 a.m. – 12:00 p.m.
+                Productos destacados: Crédito de consumo “Libranza”, ahorro digital, CDT desde $100.000, tarjetas de crédito y microcrédito.
+                Canales digitales: App Davivienda, Daviplata, Oficina virtual.
+                Sucursal en Valledupar:
+                Dirección: Calle 16 # 9-60
+                Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m. / Sábados 9:00 a.m. – 12:00 p.m.
             </li>
             <li>
                 <b>BBVA:</b> Perfil institucional: Entidad internacional con enfoque digital y productos competitivos para crédito y ahorro.
-
-Productos destacados: Crédito de libre inversión, CDT con renovación automática, tarjetas Visa, cuenta digital sin cuota de manejo.
-
-Canales digitales: App BBVA, Banca Online.
-
-Sucursal en Valledupar:
-
-Dirección: Centro Comercial Mayales Plaza
-
-Horario: Lunes a viernes 9:00 a.m. – 4:00 p.m.
+                Productos destacados: Crédito de libre inversión, CDT con renovación automática, tarjetas Visa, cuenta digital sin cuota de manejo.
+                Canales digitales: App BBVA, Banca Online.
+                Sucursal en Valledupar:
+                Dirección: Centro Comercial Mayales Plaza
+                Horario: Lunes a viernes 9:00 a.m. – 4:00 p.m.
             </li>
             <li>
                 <b>Banco Agrario:</b> Perfil institucional: Banco estatal, enfocado en desarrollo rural, microcréditos y financiamiento agrícola.
-
-Productos destacados: Créditos para emprendedores, microcrédito, ahorro tradicional, CDT.
-
-Canales digitales: App Banco Agrario, Sucursal Virtual.
-
-Sucursal en Valledupar:
-
-Dirección: Carrera 12 # 15-30, Centro
-
-Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m.
-        
+                Productos destacados: Créditos para emprendedores, microcrédito, ahorro tradicional, CDT.
+                Canales digitales: App Banco Agrario, Sucursal Virtual.
+                Sucursal en Valledupar:
+                Dirección: Carrera 12 # 15-30, Centro
+                Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m.
+            </li>
+        </ul>
     </div>
 
     <div id="comparador" class="tab-content fadeText">
@@ -370,35 +339,35 @@ Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m.
           <th>Observaciones</th>
         </tr>
 
-        <tr data-tasa="28.5">
+        <tr data-tasa="24.33">
           <td>Bancolombia</td>
           <td>24,33% E.A.</td>
           <td>43% (Tope 2025)</td>
           <td>Ofrece plazos amplios y trámites digitales.</td>
         </tr>
 
-        <tr data-tasa="29.1">
+        <tr data-tasa="24.75">
           <td>Banco de Bogotá</td>
           <td>24,75% E.A.</td>
           <td>43% (Tope 2025)</td>
           <td>Enfoque en líneas de crédito rotatorio.</td>
         </tr>
 
-        <tr data-tasa="30.0">
+        <tr data-tasa="24.90">
           <td>Davivienda</td>
           <td>24,9% E.A.</td>
           <td>43% (Tope 2025)</td>
           <td>Proceso de aprobación digital y Daviplata.</td>
         </tr>
 
-        <tr data-tasa="31.0">
+        <tr data-tasa="24.98">
           <td>BBVA</td>
           <td>24,98% E.A.</td>
           <td>43% (Tope 2025)</td>
           <td>Plazos flexibles y cuenta digital sin cuota.</td>
         </tr>
 
-        <tr data-tasa="27.8">
+        <tr data-tasa="23.87">
           <td>Banco Agrario</td>
           <td>23,87% E.A.</td>
           <td>43% (Tope 2025)</td>
@@ -408,7 +377,7 @@ Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m.
         <!-- FILA DE ANÁLISIS -->
         <tr>
           <td><b>Análisis Central</b></td>
-          <td colspan="3" style="text-align:left; background:#111; color:#0015ff;">
+          <td colspan="3" style="text-align:left; background:#0D1117; color:#3B82F6;">
             La tasa de usura es el límite máximo legal que pueden cobrar los bancos en Colombia.
             Mantener tasas por debajo de este umbral demuestra estabilidad y competencia en el mercado
             de crédito en Valledupar.
@@ -469,7 +438,7 @@ Horario: Lunes a viernes 8:00 a.m. – 4:00 p.m.
         <!-- FILA DE ANÁLISIS -->
         <tr>
           <td><b>Análisis Central</b></td>
-          <td colspan="4" style="text-align:left; background:#111; color: #0015ff;">
+          <td colspan="4" style="text-align:left; background:#0D1117; color: #3B82F6;">
             Las decisiones de política monetaria del Banco de la República influyen directamente en la tasa
             de captación del sistema bancario. En Valledupar, la competencia por el ahorro se refleja en tasas
             similares y productos digitales que facilitan la inversión.
@@ -513,20 +482,20 @@ Los bancos han endurecido sus requisitos de aprobación y han aumentado las prov
 Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continúan priorizando clientes con historial sólido. La banca digital y las fintech son una alternativa importante gracias a procesos rápidos y menores costos operativos.</p>
     </div>
 
-    <!-- SIMULADOR -->
+    <!-- SIMULADOR (MEJORADO: MÁS PRECISIÓN SIN CAMBIAR LA ESTRUCTURA GENERAL) -->
     <div id="simulador" class="tab-content fadeText">
       <div class="card">
         <label for="montoConversion">Monto del préstamo ($)</label>
         <input type="number" id="montoConversion" placeholder="Ej: 5000000" min="1">
 
         <label for="tea">Tasa Efectiva Anual (TEA %)</label>
-        <input type="number" id="tea" placeholder="Ej: 28.5" min="0.1" step="0.01">
+        <input type="number" id="tea" placeholder="Ej: 28.5" min="0.0000001" step="0.0000001">
 
         <label for="periodosAno">Periodos por año</label>
-        <input type="number" id="periodosAno" placeholder="Ej: 12" min="1" max="12">
+        <input type="number" id="periodosAno" placeholder="Ej: 12" min="1" max="365" step="1">
 
         <label for="plazoConversion">Plazo total (periodos)</label>
-        <input type="number" id="plazoConversion" placeholder="Ej: 12" min="1">
+        <input type="number" id="plazoConversion" placeholder="Ej: 12" min="1" step="1">
 
         <button id="btnCalcular" onclick="calcularConversion()">Calcular</button>
 
@@ -534,7 +503,7 @@ Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continú
       </div>
 
       <div id="tablaCardConversion" class="card oculto">
-        <h2 style="color: #0015ff; margin-top: 0;">Tabla de amortización</h2>
+        <h2 style="color: #3B82F6; margin-top: 0;">Tabla de amortización</h2>
         <table id="tablaAmortizacionConversion">
           <thead>
             <tr>
@@ -554,7 +523,7 @@ Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continú
         <h2>Gráfico de Tasas</h2>
         <div class="card">
             <canvas id="graf" width="600" height="320"></canvas>
-            <p class="small-muted">La gráfica muestra las tasas E.A. listadas en el comparador. Si cambias las tasas en la tabla del comparador, recarga la pestaña para actualizar la gráfica.</p>
+            <p class="small-muted">La gráfica muestra las tasas E.A. listadas en el comparador. Si cambias las tasas en la tabla del comparador, abre de nuevo esta pestaña para actualizar la gráfica.</p>
         </div>
     </div>
 
@@ -563,7 +532,6 @@ Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continú
         <div class="row">
             <div class="col">
                 <div id="listaNoticias" class="card">
-                    <!-- Aquí puedes pegar/añadir tus noticias. -->
                     <p class="small-muted">No hay noticias aún. Usa el formulario de la derecha para añadirlas (tus noticias no se envían a internet, quedan en la sesión del navegador mientras la página esté abierta).</p>
                 </div>
             </div>
@@ -575,7 +543,7 @@ Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continú
                     <label for="textoNoticia">Contenido / Enlace</label><br>
                     <textarea id="textoNoticia" rows="4" placeholder="Texto breve o enlace"></textarea>
                     <button id="btnAgregarNoticia">Agregar noticia</button>
-                    <button id="btnLimpiarNoticias" style="background:#333;color:#fff;margin-left:8px;">Limpiar noticias</button>
+                    <button id="btnLimpiarNoticias" style="background:#0D1117;color:#E6E6E6;margin-left:8px;">Limpiar noticias</button>
                     <p class="small-muted" style="margin-top:8px;">Pegarás aquí la información que mencionaste que pondrás tú.</p>
                 </div>
             </div>
@@ -589,7 +557,7 @@ Aunque las tasas comienzan a reducirse gradualmente, los bancos locales continú
                 <div class="card">
                     <p>Universidad de Santander (UDES)</p>
                     <p>Instituciones Financieras – Sexto Semestre</p>
-                    <p>Email: <span style="color: #0015ff;">observatorio.financiero@udes.edu.co</span></p>
+                    <p>Email: <span style="color: #3B82F6;">observatorio.financiero@udes.edu.co</span></p>
                 </div>
             </div>
             <div class="col">
@@ -629,14 +597,40 @@ document.querySelectorAll(".tab-btn").forEach(btn=>{
         btn.classList.add("active");
         const target = document.getElementById(btn.dataset.tab);
         if (target) target.classList.add("active");
-        // Si activas la pestaña de gráficos, intenta (re)dibujar la gráfica
         if (btn.dataset.tab === 'graficos') {
-            setTimeout(()=> { tryRenderChart(); }, 100); // pequeño delay para permitir layout
+            setTimeout(()=> { tryRenderChart(); }, 100);
         }
     });
 });
 
-// -------- SIMULADOR --------
+/* ========================
+   UTILIDADES NUMÉRICAS
+   ======================== */
+function toCents(num) {
+  // convierte a centavos evitando errores binarios
+  return Math.round((Number(num) || 0) * 100);
+}
+function fromCents(cents) {
+  return (cents || 0) / 100;
+}
+function fmtMoney(n) {
+  // muestra como moneda CO sin símbolo para mantener estilo previo
+  return new Intl.NumberFormat('es-CO', { minimumFractionDigits: 2, maximumFractionDigits: 2 }).format(n);
+}
+function clampInt(v, min, max) {
+  v = Math.floor(Math.abs(v));
+  if (min !== undefined && v < min) v = min;
+  if (max !== undefined && v > max) v = max;
+  return v;
+}
+
+/* ================================================
+   SIMULADOR con amortización de alta precisión
+   - Cálculos en centavos para evitar errores float
+   - Ajuste de última cuota para eliminar residuo
+   - Uso de log1p/expm1 para mayor precisión numérica
+   - Se muestra la cuota fija objetivo (sin el ajuste de la última)
+   ================================================ */
 function mostrarError(campo, mensaje) {
   campo.classList.add("error-input", "shake");
   setTimeout(() => campo.classList.remove("shake"), 300);
@@ -660,62 +654,87 @@ async function calcularConversion() {
 
   const P = Number(document.getElementById("montoConversion").value);
   const TEA = Number(document.getElementById("tea").value);
-  const m = Number(document.getElementById("periodosAno").value);
-  const n = Number(document.getElementById("plazoConversion").value);
+  let m = Number(document.getElementById("periodosAno").value);
+  let n = Number(document.getElementById("plazoConversion").value);
 
   let valido = true;
-
   if (!P || P <= 0) { mostrarError(document.getElementById("montoConversion"), "Monto debe ser > 0"); valido = false; }
   if (!TEA || TEA <= 0) { mostrarError(document.getElementById("tea"), "TEA debe ser > 0"); valido = false; }
   if (!m || m <= 0) { mostrarError(document.getElementById("periodosAno"), "Periodos/año debe ser ≥ 1"); valido = false; }
   if (!n || n <= 0) { mostrarError(document.getElementById("plazoConversion"), "Plazo debe ser ≥ 1"); valido = false; }
-
   if (!valido) return;
+
+  // sanea a enteros razonables
+  m = clampInt(m, 1, 365);
+  n = clampInt(n, 1, 2000);
 
   const btn = document.getElementById("btnCalcular");
   btn.disabled = true;
   btn.textContent = "Calculando...";
 
-  await new Promise(r => setTimeout(r, 400));
+  await new Promise(r => setTimeout(r, 150));
 
-  // Cálculos corregidos
-  const i_periodica = Math.pow(1 + TEA / 100, 1 / m) - 1;
-  const TEN = i_periodica * m;
-  const cuota = (P * i_periodica * Math.pow(1 + i_periodica, n)) / (Math.pow(1 + i_periodica, n) - 1);
+  // Tasa periódica EXACTA a partir de TEA y m, con mayor precisión numérica
+  // i_p = (1+TEA)^(1/m) - 1  -> usando log1p/expm1 para estabilidad
+  const tea_decimal = TEA / 100;
+  const i_periodica = Math.expm1(Math.log1p(tea_decimal) / m);
+  const TEN = i_periodica * m; // nominal equivalente informativa
+
+  // Factor (1+i)^n calculado con exp/log para estabilidad
+  const factor = Math.exp(n * Math.log1p(i_periodica));
+
+  // Cuota teórica (sin redondeo), y versión a centavos para la tabla
+  const cuota_teorica = (P * i_periodica * factor) / (factor - 1);
+  const cuota_cents_objetivo = toCents(cuota_teorica);
+  let cuota_cents = cuota_cents_objetivo; // se usará y ajustará en el último período
+
+  // Construir tabla amortizando en centavos
+  const P_cents = toCents(P);
+  let saldo_cents = P_cents;
+  const tbody = document.querySelector("#tablaAmortizacionConversion tbody");
+  tbody.innerHTML = "";
+
+  for (let k = 1; k <= n; k++) {
+    // Interés del período redondeado a centavos
+    let interes_cents = Math.round(saldo_cents * i_periodica);
+
+    // Para la última cuota, ajusta para cerrar saldo exactamente en 0
+    if (k === n) {
+      cuota_cents = saldo_cents + interes_cents;
+    }
+
+    let abono_cents = cuota_cents - interes_cents;
+    if (abono_cents < 0) abono_cents = 0;
+
+    saldo_cents = saldo_cents - abono_cents;
+    if (saldo_cents < 0) saldo_cents = 0;
+
+    const fila = document.createElement("tr");
+    fila.innerHTML = `
+      <td>${k}</td>
+      <td>$${fmtMoney(fromCents(cuota_cents))}</td>
+      <td>$${fmtMoney(fromCents(interes_cents))}</td>
+      <td>$${fmtMoney(fromCents(abono_cents))}</td>
+      <td>$${fmtMoney(fromCents(saldo_cents))}</td>
+    `;
+    fila.style.opacity = "0";
+    tbody.appendChild(fila);
+    setTimeout(() => fila.style.opacity = "1", k * 15);
+  }
 
   const resDiv = document.getElementById("resultadoConversion");
   resDiv.innerHTML = `
     <div class="fade-in">
-      <p><strong>Tasa Efectiva Anual (TEA):</strong> ${(TEA).toFixed(2)}%</p>
-      <p><strong>Tasa Efectiva Nominal (TEN):</strong> ${(TEN * 100).toFixed(4)}%</p>
-      <p><strong>Tasa periódica:</strong> ${(i_periodica * 100).toFixed(4)}%</p>
-      <p><strong>Cuota fija por periodo:</strong> $${cuota.toFixed(2)}</p>
+      <p><strong>Tasa Efectiva Anual (TEA):</strong> ${TEA.toFixed(8)}%</p>
+      <p><strong>Tasa efectiva periódica:</strong> ${(i_periodica * 100).toFixed(8)}%</p>
+      <p><strong>Tasa nominal equivalente (TEN):</strong> ${(TEN * 100).toFixed(8)}%</p>
+      <p><strong>Cuota fija objetivo*:</strong> $${fmtMoney(fromCents(cuota_cents_objetivo))}</p>
+      <p class="small-muted">*La última cuota puede variar levemente para cerrar el saldo exacto al centavo.</p>
     </div>
   `;
   resDiv.classList.remove("oculto");
   resDiv.classList.add("success-glow");
-  setTimeout(() => resDiv.classList.remove("success-glow"), 1000);
-
-  const saldoInicial = P;
-  let saldo = saldoInicial;
-  const tbody = document.querySelector("#tablaAmortizacionConversion tbody");
-  tbody.innerHTML = "";
-  for (let k = 1; k <= n; k++) {
-    const interes = saldo * i_periodica;
-    const abono = cuota - interes;
-    saldo -= abono;
-    const fila = document.createElement("tr");
-    fila.innerHTML = `
-      <td>${k}</td>
-      <td>$${cuota.toFixed(2)}</td>
-      <td>$${interes.toFixed(2)}</td>
-      <td>$${abono.toFixed(2)}</td>
-      <td>$${Math.max(0, saldo).toFixed(2)}</td>
-    `;
-    fila.style.opacity = "0";
-    tbody.appendChild(fila);
-    setTimeout(() => fila.style.opacity = "1", k * 40);
-  }
+  setTimeout(() => resDiv.classList.remove("success-glow"), 900);
 
   const tablaCard = document.getElementById("tablaCardConversion");
   tablaCard.classList.remove("oculto");
@@ -726,17 +745,28 @@ async function calcularConversion() {
   btn.textContent = "Calcular";
 }
 
-// -------- GRÁFICA (Chart.js) --------
+/* -------- GRÁFICA (Chart.js) -------- */
 let tasaChart = null;
+function parsePercentEs(texto) {
+    // extrae primer número y convierte coma decimal a punto
+    const m = (texto || '').match(/[\d.,]+/);
+    if (!m) return NaN;
+    const normalized = m[0].replace(/\./g,'').replace(',', '.');
+    return parseFloat(normalized);
+}
 function collectRatesFromTable() {
-    const rows = Array.from(document.querySelectorAll("#tablaComparador tr[data-tasa]"));
+    const rows = Array.from(document.querySelectorAll("#tablaComparador tr")).filter(r => r.dataset && ('tasa' in r.dataset));
     const labels = [];
     const tasas = [];
     rows.forEach(r => {
         const nameCell = r.children[0]?.innerText || 'Banco';
-        const tasa = parseFloat(r.dataset.tasa) || 0;
+        // Prioriza data-tasa; si no, intenta leer de la celda de E.A.
+        let tasa = parseFloat(r.dataset.tasa);
+        if (isNaN(tasa)) {
+            tasa = parsePercentEs(r.children[1]?.innerText || '');
+        }
         labels.push(nameCell.replace(/\n/g, ' ').trim());
-        tasas.push(tasa);
+        tasas.push(isNaN(tasa) ? 0 : tasa);
     });
     return { labels, tasas };
 }
@@ -745,12 +775,10 @@ function tryRenderChart() {
     const ctx = document.getElementById('graf');
     if (!ctx) return;
     const data = collectRatesFromTable();
-    // si ya existe, destruir y recrear (evita duplicados)
     if (tasaChart) {
-        try { tasaChart.destroy(); } catch(e) { /* ignore */ }
+        try { tasaChart.destroy(); } catch(e) {}
         tasaChart = null;
     }
-    // usa Chart.js para generar una barra simple
     tasaChart = new Chart(ctx, {
         type: 'bar',
         data: {
@@ -776,22 +804,18 @@ function tryRenderChart() {
     });
 }
 
-// render inicial si la pestaña de graficos está activa
 document.addEventListener('DOMContentLoaded', () => {
-    // intentamos renderizar la gráfica al cargar
     tryRenderChart();
-
-    // inicializar noticias: persistencia temporal (session)
     loadNoticiasFromSession();
-
-    // listeners para noticias y contacto
-    document.getElementById('btnAgregarNoticia').addEventListener('click', agregarNoticia);
-    document.getElementById('btnLimpiarNoticias').addEventListener('click', limpiarNoticias);
-
-    document.getElementById('btnEnviarContacto').addEventListener('click', enviarContacto);
+    const addBtn = document.getElementById('btnAgregarNoticia');
+    if (addBtn) addBtn.addEventListener('click', agregarNoticia);
+    const clrBtn = document.getElementById('btnLimpiarNoticias');
+    if (clrBtn) clrBtn.addEventListener('click', limpiarNoticias);
+    const sendBtn = document.getElementById('btnEnviarContacto');
+    if (sendBtn) sendBtn.addEventListener('click', enviarContacto);
 });
 
-// -------- NOTICIAS (editable por el usuario) --------
+/* -------- NOTICIAS -------- */
 function renderNoticias(list) {
     const container = document.getElementById('listaNoticias');
     container.innerHTML = '';
@@ -799,21 +823,19 @@ function renderNoticias(list) {
         container.innerHTML = '<p class="small-muted">No hay noticias aún. Usa el formulario para añadirlas.</p>';
         return;
     }
-    list.slice().reverse().forEach((item, idx) => {
+    list.slice().reverse().forEach((item) => {
         const div = document.createElement('div');
         div.className = 'news-item';
-        div.innerHTML = `<strong>${item.titulo || 'Sin título'}</strong><div style="font-size:0.95rem;margin-top:6px;">${item.texto || ''}</div><div style="margin-top:6px;font-size:0.8rem;color:#aaa;">${item.fecha || ''}</div>`;
+        div.innerHTML = `<strong>${item.titulo || 'Sin título'}</strong>
+                         <div style="font-size:0.95rem;margin-top:6px;">${item.texto || ''}</div>
+                         <div style="margin-top:6px;font-size:0.8rem;color:#9DA5B4;">${item.fecha || ''}</div>`;
         container.appendChild(div);
     });
 }
-
 function agregarNoticia() {
     const t = document.getElementById('tituloNoticia').value.trim();
     const txt = document.getElementById('textoNoticia').value.trim();
-    if (!t && !txt) {
-        alert('Ingresa un título o contenido para la noticia.');
-        return;
-    }
+    if (!t && !txt) { alert('Ingresa un título o contenido para la noticia.'); return; }
     const noticia = { titulo: t, texto: txt, fecha: new Date().toLocaleString() };
     const list = getNoticiasFromSession();
     list.push(noticia);
@@ -822,33 +844,24 @@ function agregarNoticia() {
     document.getElementById('textoNoticia').value = '';
     renderNoticias(list);
 }
-
 function getNoticiasFromSession() {
-    try {
-        const s = sessionStorage.getItem('observatorio_noticias');
-        if (!s) return [];
-        return JSON.parse(s);
-    } catch (e) { return []; }
+    try { const s = sessionStorage.getItem('observatorio_noticias'); return s ? JSON.parse(s) : []; }
+    catch (e) { return []; }
 }
-
-function loadNoticiasFromSession() {
-    renderNoticias(getNoticiasFromSession());
-}
-
+function loadNoticiasFromSession() { renderNoticias(getNoticiasFromSession()); }
 function limpiarNoticias() {
     if (!confirm('¿Limpiar todas las noticias?')) return;
     sessionStorage.removeItem('observatorio_noticias');
     loadNoticiasFromSession();
 }
 
-// -------- CONTACTO (validación y feedback local) --------
+/* -------- CONTACTO -------- */
 function enviarContacto() {
     const name = document.getElementById('contactName');
     const email = document.getElementById('contactEmail');
     const msg = document.getElementById('contactMsg');
     const feedback = document.getElementById('contactFeedback');
 
-    // limpieza de mensajes previos
     feedback.textContent = '';
     name.classList.remove('error-input');
     email.classList.remove('error-input');
@@ -856,7 +869,7 @@ function enviarContacto() {
 
     let ok = true;
     if (!name.value.trim()) { name.classList.add('error-input'); ok = false; }
-    if (!email.value.trim() || !/^\S+@\S+\.\S+$/.test(email.value.trim())) { email.classList.add('error-input'); ok = false; }
+    if (!email.value.trim() || !/^\\S+@\\S+\\.\\S+$/.test(email.value.trim())) { email.classList.add('error-input'); ok = false; }
     if (!msg.value.trim()) { msg.classList.add('error-input'); ok = false; }
 
     if (!ok) {
@@ -865,18 +878,14 @@ function enviarContacto() {
         return;
     }
 
-    // simulación de envío (no se envía a servidor)
     feedback.style.color = '#ffd700';
     feedback.textContent = 'Enviado localmente. Gracias — (esto es una simulación).';
 
-    // opcional: limpiar campos
     setTimeout(() => {
         name.value = ''; email.value = ''; msg.value = '';
-        // quitar feedback después de unos segundos
         setTimeout(()=> feedback.textContent = '', 3500);
     }, 400);
 }
-
 </script>
 </body>
 </html>
